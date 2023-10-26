@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # This script displays the content of the current directory.
 
-for f in $(ls); do
+for f in *; do
 	echo ${f#*-}
 done
