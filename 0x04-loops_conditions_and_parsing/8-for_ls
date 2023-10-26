@@ -2,5 +2,5 @@
 # This script displays the content of the current directory.
 
 for f in *; do
-	echo ${f#*-}
+	echo "${f#*-}"
 done
