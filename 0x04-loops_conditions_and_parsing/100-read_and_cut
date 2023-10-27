@@ -3,8 +3,7 @@
 
 input="/etc/passwd"
 
-
-while IFS=: read -r  un _1 id _2 _3 dir _4
+while IFS=":" read -r  un _1 id _2 _3 dir _4
 do
 	echo "$un:$id:$dir"
 done < "$input"
