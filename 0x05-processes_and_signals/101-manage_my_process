@@ -3,7 +3,7 @@
 
 _start() {
 	./manage_my_process &
-	sudo sh -c "echo "$!" > /var/run/my_process.pid"
+	sudo sh -c "echo $! > /var/run/my_process.pid"
 }
 
 _stop() {
