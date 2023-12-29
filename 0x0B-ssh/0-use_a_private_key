@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script uses ssh to connect to a server
+
+ssh ubuntu@100.25.211.211
