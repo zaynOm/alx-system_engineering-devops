@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# configure Nginx to redirect `/redirect_me` to another page
+new_config="rewrite ^/redirect_me$ \$host/ permanent;\n}"
+sed "s/}/$new_config/" /etc/nginx/sites-available/default
+service nginx reload
