@@ -15,7 +15,7 @@ file { '/etc/nginx/sites-available/default':
   content => "
 server {
 	location /redirect_me {
-		return 301 /;
+		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
 	}
 }
   ",
