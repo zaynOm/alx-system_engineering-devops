@@ -4,9 +4,8 @@ package { 'nginx':
   ensure => 'installed',
 }
 
-file { 'index.html':
+file { '/var/www/html/index.html':
   ensure  => 'file',
-  path    => '/var/www/html/',
   content => 'Hello World!',
 }
 
