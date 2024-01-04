@@ -7,24 +7,13 @@ package { 'nginx':
 file { '/var/www/html/index.html':
   ensure  => 'file',
   content => 'Hello World!',
-  mode    => '0644',
-  require => Package['nginx'],
 }
 
-file { '/etc/nginx/sites-available/default':
-  ensure  => 'file',
-  content => "
-server {
-	location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-	}
-}
-  ",
-
+exec { 'redirect_me':
+  command => '/usr/bin/sed -i "s|^}$|\n\tlocation /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}\n}|" /etc/nginx/sites-available/default',
 }
 
 service { 'nginx':
   ensure  => 'running',
   enable  => true,
-  require => Package['nginx'],
 }
