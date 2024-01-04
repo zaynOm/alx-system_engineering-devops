@@ -10,7 +10,7 @@ file { '/var/www/html/index.html':
 }
 
 exec { 'redirect_me':
-  command => '/usr/bin/sed -i "s|^}$|\n\tlocation /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}\n}|" /etc/nginx/sites-available/default',
+  command => '/usr/bin/sed -i "s|^}$|\n\tlocation /redirect_me {return 301 /;}\n}|" /etc/nginx/sites-available/default',
 }
 
 service { 'nginx':
