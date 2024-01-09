@@ -2,5 +2,11 @@
 # install & configure an HAproxy
 sudo apt-get update
 sudo apt-get -y install haproxy
-sudo echo "\nlisten myservers\n\tbind *:80\n\tbalance roundrobin\n\tserver server1 100.25.211.211:80 check\n\tserver server2 100.25.196.119:80 check\n" >> /etc/haproxy/haproxy.cfg
+sudo echo "
+	listen myservers
+		bind *:80
+		balance roundrobin
+		server 379715-web-01 100.25.211.211:80 check
+		server 379715-web-02 100.25.196.119:80 check
+" >> /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
