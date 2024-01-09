@@ -7,5 +7,5 @@ echo 'Hello World!' > /var/www/html/index.html
 sed -i "s|^}$|\n\tlocation /redirect_me {return 301 /;}\n}|" $conf
 sed -i "s|^}$|\n\tlocation @404 {return 404 \"Ceci n'est pas une page\";}\n}|" $conf
 sed -i "s/=404/@404/g" $conf
-sed -i "0,/location \/ {/s/location \/ {/&\n\t\tadd_header X-Served-By '$hostname';/" $config
+sed -i "0,/location \/ {/s/location \/ {/&\n\t\tadd_header X-Served-By '$hostname';/" $conf
 service nginx restart
