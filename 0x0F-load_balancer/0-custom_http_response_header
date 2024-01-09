@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Configure Nginx so that its HTTP response contains a custom header
 conf="/etc/nginx/sites-available/default"
+sudo bash <<EOF
 apt-get update
 apt-get -y install nginx
 echo 'Hello World!' > /var/www/html/index.html
@@ -9,3 +10,4 @@ sed -i "s|^}$|\n\tlocation @404 {return 404 \"Ceci n'est pas une page\";}\n}|" $
 sed -i "s/=404/@404/g" $conf
 sed -i "0,/location \/ {/s/location \/ {/&\n\t\tadd_header X-Served-By '$hostname';/" $conf
 service nginx restart
+EOF
