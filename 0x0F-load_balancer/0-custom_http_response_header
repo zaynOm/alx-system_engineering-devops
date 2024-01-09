@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # Configure Nginx so that its HTTP response contains a custom header
 conf_name='/etc/nginx/add_served_by_header.conf'
-server_name=$(cut -d'-' -f2-3 <<< "$(hostname)")
 echo "server {
-	add_header X-Served-By \"$server_name\";
+	add_header X-Served-By \"$hostname\";
 }" > "$conf_name"
 sed -i "/http {/,/}/{s/}/\tinclude $conf_name\n}/}" /etc/nginx/nginx.conf
 service nginx restart
