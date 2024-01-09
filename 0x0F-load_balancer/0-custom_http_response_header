@@ -2,15 +2,13 @@
 # Configure Nginx so that its HTTP response contains a custom header
 # wget https://github.com/zaynOm/alx-system_engineering-devops/blob/master/0x0C-web_server/1-install_nginx_web_server
 # source 1-install_nginx_web_server
+conf="/etc/nginx/sites-available/default"
 apt-get update
 apt-get -y install nginx
 echo 'Hello World!' > /var/www/html/index.html
-sed -i "s|^}$|\n\tlocation /redirect_me {return 301 /;}\n}|" /etc/nginx/sites-available/default
-sed -i "s|^}$|\n\tlocation @404 {return 404 \"Ceci n'est pas une page\";}\n}|" /etc/nginx/sites-available/default
-sed -i "s/=404/@404/g" /etc/nginx/sites-available/default
-conf_name='/etc/nginx/add_served_by_header.conf'
-echo "server {
-	add_header X-Served-By \"$hostname\";
-}" > "$conf_name"
-sudo sed -i "/http {/,/}/{s/}/\tinclude $conf_name\n}/}" /etc/nginx/nginx.conf
+sed -i "s|^}$|\n\tlocation /redirect_me {return 301 /;}\n}|" $conf
+sed -i "s|^}$|\n\tlocation @404 {return 404 \"Ceci n'est pas une page\";}\n}|" $conf
+sed -i "s/=404/@404/g" $conf
+#sudo sed -i "/http {/,/}/{s/}/\t\n}/}" /etc/nginx/nginx.conf
+sed -i "0,/location \/ {/s/location \/ {/&\n\t\tadd_header X-Served-By '$HOSTNAME';/" $config
 sudo service nginx restart
