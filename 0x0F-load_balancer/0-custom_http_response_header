@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # Configure Nginx so that its HTTP response contains a custom header
-wget https://github.com/zaynOm/alx-system_engineering-devops/blob/master/0x0C-web_server/1-install_nginx_web_server
-source 1-install_nginx_web_server
+# wget https://github.com/zaynOm/alx-system_engineering-devops/blob/master/0x0C-web_server/1-install_nginx_web_server
+# source 1-install_nginx_web_server
+apt-get update
+apt-get -y install nginx
+echo 'Hello World!' > /var/www/html/index.html
 conf_name='/etc/nginx/add_served_by_header.conf'
 echo "server {
 	add_header X-Served-By \"$hostname\";
