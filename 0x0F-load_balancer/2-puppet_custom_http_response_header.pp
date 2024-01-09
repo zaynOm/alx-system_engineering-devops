@@ -9,9 +9,9 @@ exec { 'apt-get update':
 }
 
 -> file_line { 'add custom header':
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'location / {',
-  line   => '\n\tadd_header X-Served-By \"$hostname\";',
+  path  => '/etc/nginx/sites-available/default',
+  after => 'location / {',
+  line  => '\n\tadd_header X-Served-By \"$hostname\";',
 }
 
 -> exec { 'service nginx restart':
