@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# debug nginx in ubuntu
+apt-get update
+apt-get -y install nginx
+service nginx start
