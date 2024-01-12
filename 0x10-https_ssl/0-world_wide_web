@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# list subdomains
+subdomains=('www' 'lb-01' 'web-01' 'web-02')
+
+print_info() {
+        read -ra res <<< "$(dig "$1.$2" | awk -F" " '/ANSWER SECTION/{getline; print $4, $5}')"
+        #res=($(dig "$1.$2" | awk -F" " '/ANSWER SECTION/{getline; print $4, $5}'))
+        echo "The subdomain $1 is a ${res[0]} record and points to ${res[1]}"
+}
+if [[ $# -eq 1 ]]; then
+        for e in "${subdomains[@]}"; do
+                print_info "$e" "$1"
+        done
+elif [[ $# -eq 2 ]]; then
+        print_info "$2" "$1"
+fi
