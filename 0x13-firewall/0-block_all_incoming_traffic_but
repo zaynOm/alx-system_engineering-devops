@@ -1,3 +1,5 @@
-sudo ufw default deny incoming
-sudo ufw allow 443,80,22/tcp
-echo 'y' | sudo ufw enable
+apt update
+apt -y install ufw
+ufw default deny incoming
+ufw allow 443,80,22/tcp
+echo 'y' | ufw enable
