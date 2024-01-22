@@ -6,3 +6,4 @@ apt -y install ufw
 ufw default deny incoming
 ufw allow 443,80,22/tcp
 echo 'y' | ufw enable
+sudo ufw status verbose
