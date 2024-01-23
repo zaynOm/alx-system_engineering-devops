@@ -5,4 +5,4 @@ sed -i '/^\tlisten /s/80/8080/' /etc/nginx/sites-available/default
 sed -i 's/^#user www-data/user nginx/' /etc/nginx/nginx.conf
 # sed -i '/^Listen/s/8080/8888/' /etc/apache2/ports.conf
 pkill apache2
--u nginx service nginx restart
+sudo -u nginx service nginx restart
