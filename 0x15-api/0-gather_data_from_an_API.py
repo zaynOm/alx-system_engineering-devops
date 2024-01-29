@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 "Display Employee tasks"
-from sys import argv
 import requests
+from sys import argv
 
 
 def fetch():
