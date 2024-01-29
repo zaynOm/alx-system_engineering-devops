@@ -18,7 +18,7 @@ def fetch():
     todos = res.json()
 
     with open(f'{user_id}.csv', 'w', newline='') as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for todo in todos:
             writer.writerow([user_id, user.get('username'),
                              todo.get('completed'), todo.get('title')])
