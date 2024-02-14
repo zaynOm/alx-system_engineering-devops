@@ -4,7 +4,7 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    url = f'https://www.reddit.com/r/{subreddit}/about.json'
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
     res = requests.get(url)
     data = res.json()
     if res.status_code == 200:
