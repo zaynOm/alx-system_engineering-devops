@@ -29,7 +29,7 @@ def helper(url, hot_list, after):
 
 
 def recurse(subreddit, hot_list=[]):
-    url = f'https://www.reddit.com/r/{subreddit}/hot.json'
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     header = {'User-Agen': 'recurse_all_posts/1.0'}
     res = requests.get(url, headers=header,
                        params={'limit': 5}, allow_redirects=False)
