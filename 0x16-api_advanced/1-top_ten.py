@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Get subs count for a subreddit"""
+"""Get top ten hot posts"""
 import requests
 
 
