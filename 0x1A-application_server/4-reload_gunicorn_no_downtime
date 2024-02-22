@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Graceful restart of gunicorn workers
 
-pgrep -f gunicorn | kill -HUP
+pkill -o gunicorn -HUP
